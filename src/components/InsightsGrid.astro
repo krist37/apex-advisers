@@ -1,0 +1,109 @@
+---
+import InsightCard from './InsightCard.astro';
+import { getInsights } from '../lib/sanity';
+
+function formatDate(iso: string): string {
+  return new Date(iso + 'T00:00:00').toLocaleDateString('en-GB', {
+    day: '2-digit', month: 'short', year: 'numeric',
+  });
+}
+
+const placeholders = [
+  { format: 'Pulse', title: 'European tech M&A activity is accelerating into Q2.', date: '12 Mar 2026', slug: 'european-tech-ma-q2' },
+  { format: 'Probe', title: 'AI infrastructure capex is entering a new and more selective cycle.', date: '05 Mar 2026', slug: 'ai-infrastructure-capex' },
+  { format: 'Snap',  title: 'Public-to-private multiples are converging across sectors.', date: '28 Feb 2026', slug: 'public-private-multiples' },
+  { format: 'Pulse', title: 'Sovereign capital is returning to compute infrastructure.', date: '19 Feb 2026', slug: 'sovereign-capital-compute' },
+  { format: 'Probe', title: 'Vertical SaaS is finding its frontier in the age of AI agents.', date: '08 Feb 2026', slug: 'vertical-saas-ai-agents' },
+  { format: 'Snap',  title: 'Founder exit valuations have diverged sharply by sector since 2019.', date: '01 Feb 2026', slug: 'founder-exit-valuations' },
+];
+
+const live = await getInsights(6);
+const cards = live.length > 0
+  ? live.map(i => ({ format: i.format, title: i.title, date: formatDate(i.date), slug: i.slug.current }))
+  : placeholders;
+---
+
+<section class="insights-section" id="insights" aria-label="Insights">
+  <div class="insights-inner">
+
+    <div class="insights-grid">
+      {cards.map(card => (
+        <InsightCard
+          format={card.format}
+          title={card.title}
+          date={card.date}
+          href={`/insights/${card.slug}`}
+        />
+      ))}
+    </div>
+
+    <div class="archive-link">
+      <a href="/insights">
+        All insights <span class="archive-arrow">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .insights-section {
+    background: var(--offwhite);
+    padding: 48px var(--page-padding) 180px;
+  }
+
+  .insights-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 48px;
+  }
+
+  .archive-link {
+    margin-top: 56px;
+    text-align: right;
+  }
+
+  .archive-link a {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--graphite);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .archive-link a:hover {
+    opacity: 0.6;
+  }
+
+  .archive-arrow {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    color: var(--gold);
+    margin-left: 4px;
+  }
+
+  @media (max-width: 900px) {
+    .insights-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 32px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .insights-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .archive-link {
+      text-align: center;
+    }
+  }
+</style>

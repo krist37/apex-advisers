@@ -1,0 +1,71 @@
+---
+// Nav exists only over the hero. Scroll-based visibility added in step 64.
+---
+
+<nav class="site-nav" id="site-nav" aria-label="Main navigation">
+  <a href="/" class="nav-wordmark">Apex Advisers</a>
+
+  <ul class="nav-links" role="list">
+    <li><a href="#thesis">Thesis</a></li>
+    <li><a href="#insights">Insights</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<style>
+  .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 36px 80px;
+    /* No background — transparent over hero video */
+  }
+
+  .nav-wordmark {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--offwhite);
+    text-decoration: none;
+    line-height: 1;
+    opacity: 0.85;
+    transition: opacity 0.25s ease;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 56px;
+  }
+
+  .nav-links a {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 11.5px;
+    color: var(--offwhite);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    opacity: 0.85;
+    transition: opacity 0.25s ease;
+  }
+
+  .nav-links a:hover {
+    opacity: 0.65;
+  }
+
+  @media (max-width: 900px) {
+    .site-nav {
+      padding: 28px 48px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .site-nav {
+      display: none;
+    }
+  }
+</style>

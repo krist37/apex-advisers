@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Advisers – Closing Section</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --dark: #1A1A1A;
+    --offwhite: #F8F8F8;
+    --gold: #C6A85A;
+    --mid: #585858;
+    --dim: #383838;
+    --faint: #2E2E2E;
+  }
+
+  body {
+    background: #F0F0F0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .preceding {
+    padding: 60px 0 48px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #C0C0C0;
+  }
+
+  .hairline {
+    width: 100%;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.45;
+  }
+
+  .closing {
+    background: var(--dark);
+    padding: 88px 40px 56px;
+  }
+
+  .closing-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .statement {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--offwhite);
+    line-height: 1.5;
+    margin-bottom: 56px;
+    opacity: 0.9;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    margin-bottom: 72px;
+  }
+
+  .action-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 10px;
+  }
+
+  .action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+  }
+
+  .action-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    font-weight: 300;
+    color: var(--offwhite);
+    opacity: 0.8;
+    letter-spacing: 0.01em;
+    transition: opacity 0.2s;
+  }
+
+  .action-arrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: var(--gold);
+    opacity: 0.9;
+    line-height: 1;
+    position: relative;
+    top: 1px;
+  }
+
+  .action-link:hover .action-text {
+    opacity: 0.45;
+  }
+
+  .footer {
+    border-top: 1px solid var(--faint);
+    padding-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .footer-offices {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    color: #686868;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-offices .meet-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #4A4A4A;
+    margin-right: 8px;
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .footer-legal a {
+    font-family: 'Inter', sans-serif;
+    font-size: 9.5px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: #2E2E2E;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-legal a:hover {
+    color: var(--mid);
+  }
+
+  .footer-sep {
+    width: 1px;
+    height: 8px;
+    background: #2E2E2E;
+  }
+
+  .footer-copy {
+    margin-left: auto;
+    font-family: 'Inter', sans-serif;
+    font-size: 9.5px;
+    font-weight: 300;
+    color: #2A2A2A;
+    letter-spacing: 0.04em;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="preceding">↑ Insights grid above</div>
+<div class="hairline"></div>
+
+<section class="closing">
+  <div class="closing-inner">
+
+    <p class="statement">We guide technology leaders and investors through defining moments.</p>
+
+    <div class="actions">
+
+      <div>
+        <div class="action-label">For confidential discussions</div>
+        <a class="action-link" href="mailto:confidential@aadvisers.com">
+          <span class="action-text">confidential@aadvisers.com</span>
+          <span class="action-arrow">→</span>
+        </a>
+      </div>
+
+      <div>
+        <div class="action-label">Insights</div>
+        <a class="action-link" href="#">
+          <span class="action-text">Sign up for updates</span>
+          <span class="action-arrow">→</span>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <div class="footer-offices">
+        <span class="meet-label">Meet us</span>Helsinki · Eteläesplanadi 8 &nbsp;&nbsp;&nbsp; Chicago · 444 N. Michigan Avenue
+      </div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <div class="footer-sep"></div>
+        <a href="#">Legal Notice</a>
+        <span class="footer-copy">© 2026 Apex Advisers</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

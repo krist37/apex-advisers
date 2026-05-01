@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllInsights } from '../../lib/sanity';
+
+const insights = await getAllInsights();
+
+function formatDate(iso: string): string {
+  return new Date(iso + 'T00:00:00').toLocaleDateString('en-GB', {
+    day: '2-digit', month: 'short', year: 'numeric',
+  });
+}
+---
+
+<BaseLayout
+  title="Insights — Apex Advisers"
+  description="Analysis and commentary on technology M&A and investment themes."
+>
+  <header class="archive-header">
+    <a href="/" class="wordmark" aria-label="Apex Advisers home">
+      <img src="/images/apex-advisers-wordmark-graphite.svg" alt="Apex Advisers" width="160" height="28" />
+    </a>
+  </header>
+
+  <main class="archive-page">
+    <div class="archive-inner">
+
+      <div class="archive-intro">
+        <p class="format-key">
+          <span>Pulse — market observations.</span>
+          <span>Probe — long-form analysis.</span>
+          <span>Snap — single data points.</span>
+        </p>
+      </div>
+
+      {insights.length === 0 ? (
+        <p class="empty-state">No insights published yet.</p>
+      ) : (
+        <ol class="insight-list">
+          {insights.map(insight => (
+            <li class="insight-row">
+              <a href={`/insights/${insight.slug.current}`} class="insight-link">
+                <span class="row-format">{insight.format}</span>
+                <span class="row-title">{insight.title}</span>
+                <span class="row-date">{formatDate(insight.date)}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      )}
+
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .archive-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--offwhite);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 20px var(--page-padding);
+  }
+
+  .wordmark img {
+    display: block;
+    height: 22px;
+    width: auto;
+  }
+
+  .archive-page {
+    background: var(--offwhite);
+    padding: 64px var(--page-padding) 120px;
+  }
+
+  .archive-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+
+  .archive-intro {
+    margin-bottom: 56px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .format-key {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--cool-grey);
+    letter-spacing: 0.04em;
+    margin: 0;
+  }
+
+  .insight-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .insight-row {
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .insight-link {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: baseline;
+    gap: 24px;
+    padding: 22px 0;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .insight-link:hover {
+    opacity: 0.6;
+  }
+
+  .row-format {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ash-grey);
+    flex-shrink: 0;
+  }
+
+  .row-title {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--graphite);
+    line-height: 1.35;
+  }
+
+  .row-date {
+    font-family: var(--font-sans);
+    font-size: 10.5px;
+    font-weight: 300;
+    color: var(--ash-grey);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .empty-state {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--cool-grey);
+  }
+
+  @media (max-width: 640px) {
+    .insight-link {
+      grid-template-columns: 48px 1fr;
+      grid-template-rows: auto auto;
+    }
+
+    .row-date {
+      grid-column: 2;
+      margin-top: 6px;
+    }
+  }
+</style>

@@ -1,0 +1,60 @@
+---
+interface Props {
+  format: string;
+  title: string;
+  date: string;
+  href: string;
+}
+
+const { format, title, date, href } = Astro.props;
+---
+
+<a class="card" href={href}>
+  <div class="card-label">{format}</div>
+  <div class="card-title">{title}</div>
+  <div class="card-date">{date}</div>
+</a>
+
+<style>
+  .card {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 32px 0;
+  }
+
+  .card:hover .card-title {
+    text-decoration-color: var(--gold);
+  }
+
+  .card-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ash-grey);
+    margin-bottom: 14px;
+  }
+
+  .card-title {
+    font-family: var(--font-serif);
+    font-size: 21px;
+    font-weight: 400;
+    color: var(--graphite);
+    line-height: 1.35;
+    margin-bottom: 16px;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .card-date {
+    font-family: var(--font-sans);
+    font-size: 10.5px;
+    font-weight: 300;
+    color: var(--ash-grey);
+    letter-spacing: 0.04em;
+  }
+</style>

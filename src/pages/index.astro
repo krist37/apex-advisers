@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Thesis from '../components/Thesis.astro';
+import InsightsGrid from '../components/InsightsGrid.astro';
+import HairlineRule from '../components/HairlineRule.astro';
+import Closing from '../components/Closing.astro';
+---
+
+<BaseLayout>
+  <Nav />
+  <main>
+    <Hero />
+    <Thesis />
+    <InsightsGrid />
+    <HairlineRule />
+    <Closing />
+  </main>
+</BaseLayout>
+
+<script>
+  import '../scripts/scroll.ts';
+</script>

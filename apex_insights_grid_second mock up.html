@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Advisers – Insights Grid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --graphite: #2B2B2B;
+    --offwhite: #F8F8F8;
+    --coolgrey: #9CA2A8;
+    --ashgrey: #B0B0B0;
+    --gold: #C6A85A;
+    --border: #E4E4E4;
+  }
+
+  body {
+    background: var(--offwhite);
+    color: var(--graphite);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    padding: 80px 40px;
+  }
+
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 48px;
+  }
+
+  .card {
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+  }
+
+  .card:hover .card-title {
+    opacity: 0.6;
+  }
+
+  .card-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ashgrey);
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--graphite);
+    margin-bottom: 20px;
+    transition: color 0.2s;
+  }
+
+  .card-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px;
+    font-weight: 300;
+    color: var(--ashgrey);
+    letter-spacing: 0.04em;
+  }
+
+  /* Archive link */
+  .archive-link {
+    margin-top: 40px;
+    text-align: right;
+  }
+
+  .archive-link a {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--coolgrey);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .archive-link a:hover {
+    opacity: 0.6;
+  }
+
+  .archive-link .arrow {
+    color: var(--gold);
+    margin-left: 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+  }
+</style>
+</head>
+<body>
+
+<section class="section">
+
+  <div class="grid">
+
+    <a class="card" href="#">
+      <div class="card-label">Pulse</div>
+      <div class="card-title">European tech M&amp;A activity is accelerating into Q2.</div>
+      <div class="card-date">12 Mar 2026</div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="card-label">Probe</div>
+      <div class="card-title">AI infrastructure capex is entering a new and more selective cycle.</div>
+      <div class="card-date">05 Mar 2026</div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="card-label">Snap</div>
+      <div class="card-title">Public-to-private multiples are converging across sectors.</div>
+      <div class="card-date">28 Feb 2026</div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="card-label">Pulse</div>
+      <div class="card-title">Sovereign capital is returning to compute infrastructure.</div>
+      <div class="card-date">19 Feb 2026</div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="card-label">Probe</div>
+      <div class="card-title">Vertical SaaS is finding its frontier in the age of AI agents.</div>
+      <div class="card-date">08 Feb 2026</div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="card-label">Snap</div>
+      <div class="card-title">Founder exit valuations have diverged sharply by sector since 2019.</div>
+      <div class="card-date">01 Feb 2026</div>
+    </a>
+
+  </div>
+
+  <div class="archive-link">
+    <a href="#">All insights <span class="arrow">→</span></a>
+  </div>
+
+</section>
+
+</body>
+</html>

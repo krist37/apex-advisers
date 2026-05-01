@@ -1,0 +1,64 @@
+/* ─────────────────────────────────────────────
+   Design System — Apex Advisers
+   ───────────────────────────────────────────── */
+
+:root {
+  /* Brand palette */
+  --graphite:   #2B2B2B;
+  --offwhite:   #F8F8F8;
+  --cool-grey:  #9CA2A8;
+  --ash-grey:   #B0B0B0;
+  --gold:       #C6A85A;
+  --teal:       #0077A4; /* data visualisation only */
+
+  /* Dark section tones */
+  --dark:       #1A1A1A;
+  --dark-mid:   #585858;
+  --dark-dim:   #383838;
+  --dark-faint: #2E2E2E;
+
+  /* UI */
+  --border:     #E4E4E4;
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Layout */
+  --content-max:  900px;   /* insights grid + general max */
+  --column-max:   680px;   /* thesis / closing text column */
+  --page-padding: 40px;    /* horizontal page padding */
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--offwhite);
+  color: var(--graphite);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}

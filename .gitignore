@@ -1,0 +1,12 @@
+dist/
+.output/
+.vercel/
+node_modules/
+studio/node_modules/
+.env
+.env.local
+.DS_Store
+*.log
+.astro/
+.claude/
+*Zone.Identifier

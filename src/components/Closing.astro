@@ -1,0 +1,213 @@
+---
+// Closing section — dark, cinematic conclusion. Emergence scroll behaviour added in step 64.
+const HUBSPOT_SIGNUP_URL = 'TODO';
+---
+
+<section class="closing" id="contact" aria-label="Contact">
+  <div class="closing-inner">
+
+    <p class="statement">
+      We guide technology leaders and investors through defining moments.
+    </p>
+
+    <div class="actions">
+
+      <div class="action-block">
+        <div class="action-label">For confidential discussions</div>
+        <a class="action-link" href="mailto:confidential@aadvisers.com">
+          <span class="action-text">confidential@aadvisers.com</span>
+          <span class="action-arrow">→</span>
+        </a>
+      </div>
+
+      <div class="action-block">
+        <div class="action-label">Insights</div>
+        <a class="action-link" href={HUBSPOT_SIGNUP_URL}>
+          <span class="action-text">Sign up for updates</span>
+          <span class="action-arrow">→</span>
+        </a>
+      </div>
+
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-offices">
+        <span class="meet-label">Meet us</span>
+        Helsinki · Eteläesplanadi 8<span class="office-sep">·</span>Chicago · 444 N. Michigan Avenue
+      </div>
+      <div class="footer-legal">
+        <a href="/privacy">Privacy Policy</a>
+        <div class="footer-sep" aria-hidden="true"></div>
+        <a href="/legal">Legal Notice</a>
+        <span class="footer-copy">© 2026 Apex Advisers</span>
+      </div>
+    </footer>
+
+  </div>
+</section>
+
+<style>
+  .closing {
+    background: var(--dark);
+    min-height: 100vh;
+    padding: 80px var(--page-padding) 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .closing-inner {
+    flex: 0 0 auto;
+    max-width: 940px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .statement {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--offwhite);
+    line-height: 1.5;
+    opacity: 0.9;
+    margin-bottom: 120px;
+    font-style: normal;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    margin-bottom: 96px;
+  }
+
+  .action-label {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--cool-grey);
+    margin-bottom: 14px;
+  }
+
+  .action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .action-text {
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    font-weight: 300;
+    color: var(--offwhite);
+    letter-spacing: 0.01em;
+    transition: opacity 0.2s ease;
+  }
+
+  .action-arrow {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    color: var(--gold);
+    line-height: 1;
+    position: relative;
+    top: 1px;
+  }
+
+  .action-link:hover .action-text {
+    opacity: 0.45;
+  }
+
+  /* Footer */
+  .site-footer {
+    border-top: 1px solid rgba(248, 248, 248, 0.08);
+    padding-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-offices {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: #8A8A8A;
+    letter-spacing: 0.04em;
+  }
+
+  .meet-label {
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #666666;
+    margin-right: 8px;
+  }
+
+  .office-sep {
+    display: inline;
+    padding: 0 12px;
+    color: #666666;
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .footer-legal a {
+    font-family: var(--font-sans);
+    font-size: 9.5px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: #6B6B6B;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-legal a:hover {
+    color: var(--ash-grey);
+  }
+
+  .footer-sep {
+    width: 1px;
+    height: 8px;
+    background: #4A4A4A;
+    flex-shrink: 0;
+  }
+
+  .footer-copy {
+    margin-left: auto;
+    font-family: var(--font-sans);
+    font-size: 9.5px;
+    font-weight: 300;
+    color: #6B6B6B;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 900px) {
+    .closing {
+      padding: 64px var(--page-padding) 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .closing {
+      padding: 64px 24px 64px;
+    }
+
+    .footer-offices {
+      line-height: 1.8;
+    }
+
+    .office-sep {
+      display: block;
+      padding: 0;
+      height: 0;
+      overflow: hidden;
+    }
+  }
+</style>

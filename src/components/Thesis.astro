@@ -1,0 +1,107 @@
+---
+// Thesis section — sticky canvas approach.
+// .thesis-container is a tall scroll container (~450vh) that provides pacing.
+// .thesis-sticky stays fixed in the viewport while the container scrolls past.
+// Beat opacity is driven continuously by scroll progress in scroll.ts.
+// No CSS transitions, no transforms, no positional movement of any kind.
+---
+
+<section class="thesis-container" id="thesis" aria-label="Thesis">
+  <div class="thesis-sticky">
+    <div class="thesis-inner">
+
+      <!-- Beat 1: two lines revealed sequentially, each controlled by scroll.ts -->
+      <div class="beat-1">
+        <p class="thesis-line thesis-line-1">Energy powered the last century.</p>
+        <p class="thesis-line thesis-line-2">Intelligence builds this one.</p>
+      </div>
+
+      <!-- Beat 2: positioning statement -->
+      <p class="positioning">
+        We guide technology leaders and investors through defining moments —
+        bringing clarity and conviction to outcomes of enduring consequence.
+      </p>
+
+      <!-- Beat 3: service line -->
+      <p class="service">
+        M&amp;A and strategic advisory for technology-led companies.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Tall container — holds scroll height, transparent to layout */
+  .thesis-container {
+    height: 480vh;
+  }
+
+  /* Sticky panel — white canvas, fixed in viewport during container scroll */
+  .thesis-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    background: var(--offwhite);
+    overflow: hidden;
+    padding: 16vh var(--page-padding) 0;
+  }
+
+  .thesis-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* ── Beat 1 ── */
+  .beat-1 {
+    /* No opacity here — each line controlled independently by scroll.ts */
+    margin-bottom: max(96px, 12vh);
+  }
+
+  .thesis-line {
+    font-family: var(--font-serif);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--graphite);
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+    opacity: 0; /* initial state — overridden by scroll.ts inline style */
+  }
+
+  .thesis-line + .thesis-line {
+    margin-top: 32px;
+  }
+
+  /* ── Beat 2 ── */
+  .positioning {
+    opacity: 0;
+    font-family: var(--font-serif);
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--graphite);
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+    margin-bottom: max(112px, 14vh);
+  }
+
+  /* ── Beat 3 ── */
+  .service {
+    opacity: 0;
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--graphite);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 768px) {
+    .thesis-container { height: 420vh; }
+    .thesis-sticky    { padding: 13vh 24px 0; }
+    .beat-1           { margin-bottom: max(62px, 9vh); }
+    .thesis-line      { font-size: 26px; }
+    .positioning      { font-size: 20px; margin-bottom: max(72px, 10vh); }
+    .service          { font-size: 22px; }
+  }
+</style>

@@ -1,0 +1,239 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllInsights } from '../../lib/sanity';
+import type { Insight } from '../../lib/sanity';
+import { toHTML } from '@portabletext/to-html';
+
+export async function getStaticPaths() {
+  const insights = await getAllInsights();
+  return insights.map(insight => ({
+    params: { slug: insight.slug.current },
+    props: { insight },
+  }));
+}
+
+const { insight } = Astro.props as { insight: Insight };
+
+const bodyHtml = insight.body && insight.body.length > 0
+  ? toHTML(insight.body as Parameters<typeof toHTML>[0])
+  : '';
+
+const formattedDate = new Date(insight.date + 'T00:00:00').toLocaleDateString('en-GB', {
+  day: '2-digit', month: 'long', year: 'numeric',
+});
+---
+
+<BaseLayout title={`${insight.title} — Apex Advisers`}>
+  <header class="insight-header">
+    <a href="/" class="wordmark" aria-label="Apex Advisers home">
+      <img src="/images/apex-advisers-wordmark-graphite.svg" alt="Apex Advisers" width="160" height="28" />
+    </a>
+  </header>
+
+  <main class="insight-page">
+    <div class="insight-inner">
+
+      <nav class="breadcrumb">
+        <a href="/insights">← All insights</a>
+      </nav>
+
+      <div class="insight-meta">
+        <span class="format-label">{insight.format}</span>
+        <span class="meta-date">{formattedDate}</span>
+      </div>
+
+      <h1 class="insight-title">{insight.title}</h1>
+
+      {insight.imageUrl && (
+        <figure class="insight-image">
+          <img src={insight.imageUrl} alt="" loading="lazy" />
+        </figure>
+      )}
+
+      {bodyHtml && (
+        <div class="insight-body" set:html={bodyHtml} />
+      )}
+
+      {insight.format === 'Probe' && insight.pdfUrl && (
+        <div class="pdf-download">
+          <a href={insight.pdfUrl} target="_blank" rel="noopener noreferrer" class="pdf-link">
+            Download report <span class="download-arrow">↓</span>
+          </a>
+        </div>
+      )}
+
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .insight-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--offwhite);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 20px var(--page-padding);
+  }
+
+  .wordmark img {
+    display: block;
+    height: 22px;
+    width: auto;
+  }
+
+  .insight-page {
+    background: var(--offwhite);
+    padding: 64px var(--page-padding) 120px;
+  }
+
+  .insight-inner {
+    max-width: var(--column-max);
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    margin-bottom: 48px;
+  }
+
+  .breadcrumb a {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--cool-grey);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--graphite);
+  }
+
+  .insight-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .format-label {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ash-grey);
+  }
+
+  .meta-date {
+    font-family: var(--font-sans);
+    font-size: 10.5px;
+    font-weight: 300;
+    color: var(--ash-grey);
+    letter-spacing: 0.04em;
+  }
+
+  .insight-title {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--graphite);
+    margin: 0 0 40px;
+  }
+
+  .insight-image {
+    margin: 0 0 40px;
+  }
+
+  .insight-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .insight-body {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--graphite);
+  }
+
+  .insight-body :global(p) {
+    margin: 0 0 1.5em;
+  }
+
+  .insight-body :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .insight-body :global(h2) {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--graphite);
+    margin: 2em 0 0.75em;
+    line-height: 1.3;
+  }
+
+  .insight-body :global(h3) {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--graphite);
+    margin: 1.75em 0 0.5em;
+    line-height: 1.3;
+  }
+
+  .insight-body :global(blockquote) {
+    border-left: 2px solid var(--gold);
+    padding-left: 24px;
+    margin: 2em 0;
+    color: var(--cool-grey);
+    font-style: italic;
+  }
+
+  .insight-body :global(strong) {
+    font-weight: 400;
+    color: var(--graphite);
+  }
+
+  .pdf-download {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .pdf-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--graphite);
+    text-decoration: none;
+    border: 1px solid var(--graphite);
+    padding: 14px 28px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .pdf-link:hover {
+    background: var(--graphite);
+    color: var(--offwhite);
+  }
+
+  .download-arrow {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    color: var(--gold);
+  }
+
+  .pdf-link:hover .download-arrow {
+    color: var(--offwhite);
+  }
+</style>
