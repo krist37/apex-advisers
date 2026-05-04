@@ -15,7 +15,17 @@ export async function getStaticPaths() {
 const { insight } = Astro.props as { insight: Insight };
 
 const bodyHtml = insight.body && insight.body.length > 0
-  ? toHTML(insight.body as Parameters<typeof toHTML>[0])
+  ? toHTML(insight.body as Parameters<typeof toHTML>[0], {
+      components: {
+        types: {
+          image: ({ value }: { value: { url?: string; alt?: string } }) => {
+            if (!value?.url) return '';
+            const alt = value.alt ?? '';
+            return `<figure class="body-image"><img src="${value.url}" alt="${alt}" loading="lazy" /></figure>`;
+          },
+        },
+      },
+    })
   : '';
 
 const formattedDate = new Date(insight.date + 'T00:00:00').toLocaleDateString('en-GB', {
@@ -198,6 +208,16 @@ const formattedDate = new Date(insight.date + 'T00:00:00').toLocaleDateString('e
   .insight-body :global(strong) {
     font-weight: 400;
     color: var(--graphite);
+  }
+
+  .insight-body :global(figure.body-image) {
+    margin: 3em 0;
+  }
+
+  .insight-body :global(figure.body-image img) {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .pdf-download {
