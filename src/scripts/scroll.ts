@@ -56,8 +56,8 @@ function init(): void {
     // 1. Line 1: fades in 80px → 680px (600px window), max opacity 0.75
     line1.style.opacity = (prog(y, 80, 680) * 0.75).toFixed(3);
 
-    // 2. Line 2: fades in 300px → 900px (600px window), trails Line 1 slightly
-    line2.style.opacity = (prog(y, 300, 900) * 0.75).toFixed(3);
+    // 2. Line 2: fades in 420px → 1020px (600px window) — held back a beat vs. Line 1
+    line2.style.opacity = (prog(y, 420, 1020) * 0.75).toFixed(3);
 
     // 3. Nav: fully visible during sticky phase, fades as hero scrolls off.
     //    Disable pointer events once invisible so it doesn't block thesis clicks.
@@ -73,8 +73,8 @@ function init(): void {
     //
     //    0.00–0.14  breathing room (white canvas)
     //    0.14–0.26  line 1 fades in
-    //    0.26–0.38  line 2 fades in  (sequential, like hero title treatment)
-    //    0.38–0.46  brief settle — ~38vh pause before positioning (~30–40vh target)
+    //    0.31–0.43  line 2 fades in  — small breath after line 1 settles
+    //    0.43–0.46  brief settle before positioning
     //    0.46–0.58  positioning fades in
     //    0.58–0.69  shorter pause — lines+positioning settled
     //    0.69–0.81  service fades in
@@ -82,7 +82,7 @@ function init(): void {
     if (thesisContainer && thesisLine1 && thesisLine2 && thesisBeat2 && thesisBeat3) {
       const p = clamp((y - thesisTop) / thesisScrollTravel);
       thesisLine1.style.opacity  = prog(p, 0.14, 0.26).toFixed(3);
-      thesisLine2.style.opacity  = prog(p, 0.26, 0.38).toFixed(3);
+      thesisLine2.style.opacity  = prog(p, 0.31, 0.43).toFixed(3);
       thesisBeat2.style.opacity  = prog(p, 0.46, 0.58).toFixed(3);
       thesisBeat3.style.opacity  = prog(p, 0.69, 0.81).toFixed(3);
     }
