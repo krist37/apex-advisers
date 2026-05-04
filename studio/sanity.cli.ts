@@ -6,6 +6,8 @@ export default defineCliConfig({
     dataset: 'production',
   },
   studioHost: 'apex-advisers',
-  appId: 'pzn9oxrp2amz9g2lg4b5qsjj',
-  autoUpdates: true,
+  deployment: {
+    appId: 'pzn9oxrp2amz9g2lg4b5qsjj',
+    autoUpdates: true,
+  },
 });
