@@ -23,8 +23,10 @@ const { format, title, date, href } = Astro.props;
     padding: 32px 0;
   }
 
-  .card:hover .card-title {
-    text-decoration-color: var(--gold);
+  @media (hover: hover) {
+    .card:hover .card-title {
+      text-decoration-color: var(--gold);
+    }
   }
 
   .card-label {
