@@ -50,10 +50,6 @@ const formattedDate = new Date(insight.date + 'T00:00:00').toLocaleDateString('e
   <main class="insight-page">
     <div class="insight-inner">
 
-      <nav class="breadcrumb">
-        <a href="/insights">← All insights</a>
-      </nav>
-
       <div class="insight-meta">
         <span class="format-label">{insight.format}</span>
         <span class="meta-date">{formattedDate}</span>
@@ -116,24 +112,6 @@ const formattedDate = new Date(insight.date + 'T00:00:00').toLocaleDateString('e
   .insight-inner {
     max-width: var(--column-max);
     margin: 0 auto;
-  }
-
-  .breadcrumb {
-    margin-bottom: 48px;
-  }
-
-  .breadcrumb a {
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 300;
-    letter-spacing: 0.06em;
-    color: var(--cool-grey);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  .breadcrumb a:hover {
-    color: var(--graphite);
   }
 
   .insight-meta {
