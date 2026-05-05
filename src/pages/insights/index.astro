@@ -48,6 +48,12 @@ function formatDate(iso: string): string {
         </ol>
       )}
 
+      <nav class="archive-end-nav" aria-label="Page navigation">
+        <a href="/" class="archive-home-link">
+          <span class="archive-home-arrow">←</span> Home
+        </a>
+      </nav>
+
     </div>
   </main>
 </BaseLayout>
@@ -152,6 +158,32 @@ function formatDate(iso: string): string {
     font-size: 13px;
     font-weight: 300;
     color: var(--cool-grey);
+  }
+
+  .archive-end-nav {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .archive-home-link {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--cool-grey);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .archive-home-link:hover {
+    opacity: 0.5;
+  }
+
+  .archive-home-arrow {
+    font-family: var(--font-serif);
+    font-size: 13px;
+    color: var(--gold);
   }
 
   @media (max-width: 640px) {
