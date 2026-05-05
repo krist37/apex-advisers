@@ -79,6 +79,15 @@ const formattedDate = new Date(insight.date + 'T00:00:00').toLocaleDateString('e
         </div>
       )}
 
+      <nav class="end-nav" aria-label="Page navigation">
+        <a href="/" class="end-nav-link">
+          <span class="end-nav-arrow">←</span> Home
+        </a>
+        <a href="/insights" class="end-nav-link">
+          All insights <span class="end-nav-arrow">→</span>
+        </a>
+      </nav>
+
     </div>
   </main>
 </BaseLayout>
@@ -262,5 +271,34 @@ const formattedDate = new Date(insight.date + 'T00:00:00').toLocaleDateString('e
 
   .pdf-link:hover .download-arrow {
     color: var(--offwhite);
+  }
+
+  .end-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .end-nav-link {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--cool-grey);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .end-nav-link:hover {
+    opacity: 0.5;
+  }
+
+  .end-nav-arrow {
+    font-family: var(--font-serif);
+    font-size: 13px;
+    color: var(--gold);
   }
 </style>
