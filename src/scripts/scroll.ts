@@ -56,8 +56,10 @@ function init(): void {
     // 1. Line 1: fades in 80px → 680px (600px window), max opacity 0.75
     line1.style.opacity = (prog(y, 80, 680) * 0.75).toFixed(3);
 
-    // 2. Line 2: fades in 420px → 1020px (600px window) — held back a beat vs. Line 1
-    line2.style.opacity = (prog(y, 420, 1020) * 0.75).toFixed(3);
+    // 2. Line 2: fades in 420px → 1150px — held back a beat vs. Line 1.
+    //    Completes well before stickyRange (~1800px at 900px viewport) so the
+    //    fully-visible headline holds for ~650px of scroll before the hero releases.
+    line2.style.opacity = (prog(y, 420, 1150) * 0.75).toFixed(3);
 
     // 3. Nav: fully visible during sticky phase, fades as hero scrolls off.
     //    Disable pointer events once invisible so it doesn't block thesis clicks.
