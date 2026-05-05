@@ -14,6 +14,8 @@ export async function getStaticPaths() {
 
 const { insight } = Astro.props as { insight: Insight };
 
+const metaDescription = insight.metaDescription || insight.excerpt || insight.title;
+
 const bodyHtml = insight.body && insight.body.length > 0
   ? toHTML(insight.body as Parameters<typeof toHTML>[0], {
       components: {
@@ -33,7 +35,12 @@ const formattedDate = new Date(insight.date + 'T00:00:00').toLocaleDateString('e
 });
 ---
 
-<BaseLayout title={`${insight.title} — Apex Advisers`}>
+<BaseLayout
+  title={`${insight.title} — Apex Advisers`}
+  description={metaDescription}
+  ogType="article"
+  ogImage={insight.imageUrl}
+>
   <header class="insight-header">
     <a href="/" class="wordmark" aria-label="Apex Advisers home">
       <img src="/images/apex-advisers-wordmark-graphite.svg" alt="Apex Advisers" width="160" height="28" />

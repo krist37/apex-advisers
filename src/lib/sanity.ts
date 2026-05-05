@@ -19,10 +19,12 @@ export type Insight = {
   body?: unknown[];
   pdfUrl?: string;
   imageUrl?: string;
+  metaDescription?: string;
+  excerpt?: string;
 };
 
 const CARD_FIELDS = `_id, slug, format, title, date`;
-const FULL_FIELDS = `_id, slug, format, title, date, "body": body[]{..., "url": asset->url}, "pdfUrl": pdfAsset.asset->url, "imageUrl": image.asset->url`;
+const FULL_FIELDS = `_id, slug, format, title, date, metaDescription, excerpt, "body": body[]{..., "url": asset->url}, "pdfUrl": pdfAsset.asset->url, "imageUrl": image.asset->url`;
 
 export async function getInsights(limit = 6): Promise<Insight[]> {
   if (!import.meta.env.SANITY_PROJECT_ID) return [];

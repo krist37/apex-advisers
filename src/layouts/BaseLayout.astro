@@ -1,34 +1,32 @@
 ---
+import BaseHead from '../components/BaseHead.astro';
+
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
+  canonical?: string;
+  ogType?: 'website' | 'article';
 }
 
 const {
   title = 'Apex Advisers',
-  description = 'Technology investment banking advisory. M&A and strategic advisory for technology-led companies.',
+  description = 'Apex Advisers is a technology investment banking boutique. M&A and capital raising advisory for technology-led companies and their investors.',
+  ogImage,
+  canonical,
+  ogType = 'website',
 } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content={description} />
-  <title>{title}</title>
-
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap"
-    rel="stylesheet"
+  <BaseHead
+    title={title}
+    description={description}
+    ogImage={ogImage}
+    canonical={canonical}
+    ogType={ogType}
   />
 </head>
 <body>

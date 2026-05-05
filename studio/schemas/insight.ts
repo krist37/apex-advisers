@@ -47,6 +47,13 @@ export default defineType({
         {
           type: 'image',
           options: { hotspot: true },
+          fields: [
+            defineField({
+              name: 'alt',
+              title: 'Alt text',
+              type: 'string',
+            }),
+          ],
         },
       ],
       hidden: ({ document }) => document?.format === 'Probe',
@@ -63,6 +70,20 @@ export default defineType({
       title: 'Image',
       type: 'image',
       options: { hotspot: true },
+    }),
+    defineField({
+      name: 'excerpt',
+      title: 'Excerpt',
+      type: 'text',
+      rows: 3,
+      description: 'Short summary for listings and SEO fallback. 1–2 sentences.',
+    }),
+    defineField({
+      name: 'metaDescription',
+      title: 'Meta Description',
+      type: 'string',
+      description: 'SEO meta description. Target 120–160 characters. Overrides excerpt when set.',
+      validation: Rule => Rule.max(160).warning('Meta descriptions over 160 characters are truncated in search results.'),
     }),
   ],
   orderings: [
