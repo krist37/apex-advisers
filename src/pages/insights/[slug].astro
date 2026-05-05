@@ -270,8 +270,10 @@ const formattedDate = new Date(insight.date + 'T00:00:00').toLocaleDateString('e
     transition: opacity 0.2s ease;
   }
 
-  .end-nav-link:hover {
-    opacity: 0.5;
+  @media (hover: hover) {
+    .end-nav-link:hover {
+      opacity: 0.5;
+    }
   }
 
   .end-nav-arrow {
